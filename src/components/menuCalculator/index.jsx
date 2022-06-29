@@ -1,4 +1,5 @@
 import React from 'react';
+import { FcCalculator } from 'react-icons/fc';
 
 import { 
   Container,
@@ -11,7 +12,10 @@ import Buttom from '../buttom';
 function menuCalculator() {
   return (
     <Container>
-      <Title>Calculator</Title>
+      <Title>
+        <FcCalculator />
+        Calculator
+      </Title>
       <ButtomGroup>
         <Buttom
           text='123'

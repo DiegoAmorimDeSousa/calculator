@@ -3,13 +3,16 @@ import React from 'react';
 import { Container } from './styles';
 
 import Menu from '../../components/menuCalculator';
+import Content from '../../components/content';
 
-function calculator() {
+function Calculator() {
+
   return (
     <Container>
       <Menu />
+      <Content />
     </Container>
   );
 }
 
-export default calculator;
+export default Calculator;

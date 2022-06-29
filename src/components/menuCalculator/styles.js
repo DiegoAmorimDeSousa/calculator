@@ -15,8 +15,15 @@ export const Title = styled.div`
   width: 90%;
   text-align: center;
   font-family: var(--font-family-rubik);
-  font-size: 25px;
+  font-size: 20px;
   letter-spacing: 1.5px;
+  display: flex;
+
+  svg {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+  }
 `;
 
 export const ButtomGroup = styled.div`
