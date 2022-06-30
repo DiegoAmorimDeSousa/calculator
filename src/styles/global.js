@@ -24,5 +24,6 @@ export default createGlobalStyle`
     --color-white: #FFFFFF;
     --color-purple: #914BBB;
     --color-purple-hover: #4D3D93;
+    --color-gray: #7b8995;
   }
 `;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 60px;
+  width: ${props => props.length ? '131px' : '60px'};
   height: 60px;
   display: flex;
   justify-content: center;
@@ -9,9 +9,11 @@ export const Container = styled.div`
   font-family: var(--font-family-roboto);
   color: var(--color-white);
   letter-spacing: 2px;
-  background: var(--color-purple);
+  background: ${props => props.background};
   cursor: pointer;
   transition: background 1s;
+  margin-bottom: 12px;
+  font-weight: ${props => props.bold ? 'bold' : 'normal'};
 
   &:hover {
     background: var(--color-purple-hover);

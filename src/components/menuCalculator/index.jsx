@@ -19,9 +19,11 @@ function menuCalculator() {
       <ButtomGroup>
         <Buttom
           text='123'
+          background='var(--color-purple)'
         />
         <Buttom
           text='X'
+          background='var(--color-purple)'
         />
       </ButtomGroup>
     </Container>

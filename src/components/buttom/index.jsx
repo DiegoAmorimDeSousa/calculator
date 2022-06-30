@@ -4,7 +4,11 @@ import { Container } from './styles';
 
 function buttom(props) {
   return (
-    <Container>
+    <Container 
+      background={props.background}
+      bold={props.bold}
+      length={props.length}
+    >
       {props.text}
     </Container>
   );
