@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { 
@@ -10,33 +10,29 @@ import {
 
 import Buttom from '../buttom';
 
+import buttomJson from './buttomJson';
+
 function Content() {
   const initPage = useSelector(state => state.initPage);
+  const valueCalculator = useSelector(state => state.valueCalculator);
 
   return (
     <Container>
       <PainelCalculator>
-        <ValueCalculator>0</ValueCalculator>
+        <ValueCalculator>{valueCalculator}</ValueCalculator>
         <GroupCalculator>
-          <Buttom text="AC" background='var(--color-gray)'/>
-          <Buttom text="[+/-]" background='var(--color-gray)' />
-          <Buttom text="%" background='var(--color-gray)' />
-          <Buttom text="÷" background='var(--color-gray)' />
-          <Buttom text="7" background='var(--color-gray)' bold={true} />
-          <Buttom text="8" background='var(--color-gray)' bold={true} />
-          <Buttom text="9" background='var(--color-gray)' bold={true} />
-          <Buttom text="X" background='var(--color-gray)' />
-          <Buttom text="4" background='var(--color-gray)' bold={true} />
-          <Buttom text="5" background='var(--color-gray)' bold={true} />
-          <Buttom text="6" background='var(--color-gray)' bold={true} />
-          <Buttom text="-" background='var(--color-gray)' />
-          <Buttom text="1" background='var(--color-gray)' bold={true} />
-          <Buttom text="2" background='var(--color-gray)' bold={true} />
-          <Buttom text="3" background='var(--color-gray)' bold={true} />
-          <Buttom text="+" background='var(--color-gray)' />
-          <Buttom text="0" background='var(--color-gray)' length={true} />
-          <Buttom text="." background='var(--color-gray)' />
-          <Buttom text="=" background='var(--color-gray)' />
+          {buttomJson.map(buttom => {
+            return (
+              <Buttom 
+                key={buttom.text}
+                text={buttom.text} 
+                background={buttom.background}
+                bold={buttom.bold}
+                length={buttom.length}
+                id={buttom.text}
+              />
+            )
+          })}
         </GroupCalculator>
       </PainelCalculator>
     </Container>

@@ -15,7 +15,7 @@ export const Container = styled.div`
   margin-bottom: 12px;
   font-weight: ${props => props.bold ? 'bold' : 'normal'};
 
-  &:hover {
+  &:hover, &:focus {
     background: var(--color-purple-hover);
   }
 `;
