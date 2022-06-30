@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Container } from './styles';
@@ -9,11 +9,13 @@ function Buttom(props) {
 
   const dispatch = useDispatch();
 
-  const valueCalculatorState = useSelector(state => state.valueCalculator);
+  const valueCalculatorState = useSelector(state => state.valueCalculator.toString());
+
+  const [equalSign, setEqualSign] = useState(false);
 
   const clickButtom = (value) => {
     if(value !== 'AC' && value !== '='){
-      calculator(valueCalculatorState.replace('0', '') + value);
+      calculator(valueCalculatorState === '0' ? value : valueCalculatorState + value);
     } 
 
     if(value === 'AC'){
@@ -21,7 +23,8 @@ function Buttom(props) {
     }
 
     if(value === '='){
-      calculator(valueCalculatorState.replace('0', ''));
+      setEqualSign(true);
+      calculator(valueCalculatorState);
     }
   }
 
@@ -36,7 +39,7 @@ function Buttom(props) {
       }, 1000);
 
       if(props.text !== 'AC' && props.text !== '='){
-        calculator(valueCalculatorState.replace('0', '') + props.text);
+        calculator(valueCalculatorState === '0' ? props.text : valueCalculatorState + props.text);
       }
 
       if(props.text === 'AC'){
@@ -44,25 +47,26 @@ function Buttom(props) {
       }
 
       if(props.text === '='){
-        calculator(valueCalculatorState.replace('0', ''));
+        setEqualSign(true);
       }
     }
   });
 
   const calculator = (value) => {
-
-    let firstValue = '';
-    let secondValue = '';
-
-    valueCalculatorState.split('').map(element => {
-      if(element){
-        firstValue += firstValue + element;
+    console.log('VALUE', value);
+    if(!value.includes('+')){
+      localStorage.setItem('FIRST_VALUE', value);
+      dispatch(valueCalculator(value));
+    } else {
+      const secondValue2 = value.split('+')[1]; 
+      dispatch(valueCalculator(value));
+      if(equalSign){
+        console.log('SOMA', localStorage.getItem('FIRST_VALUE'));
+        dispatch(valueCalculator(Number(localStorage.getItem('FIRST_VALUE')) + Number(secondValue2)));
+        localStorage.removeItem('FIRST_VALUE');
+        setEqualSign(false);
       }
-    });
-
-    console.log(firstValue);
-
-    dispatch(valueCalculator(value));
+    }
   }
 
   return (
