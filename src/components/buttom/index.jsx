@@ -17,6 +17,7 @@ function Buttom(props) {
   const [operation, setOperation] = useState(false);  
 
   const addScreenValue = (value) => {
+    console.log(value);
     if((value === '+' || value === '-' || value === '/' || value === '*') && operation){
       setOperation(false);
       dispatch(valueCalculator(result + value));
@@ -55,6 +56,7 @@ function Buttom(props) {
       setAccumulator(calculate);
       setResult(calculate);
       setOperation(true);
+      dispatch(valueCalculator(calculate));
     } catch {
       setResult('ERRO');
     }
@@ -93,10 +95,10 @@ function Buttom(props) {
         props.changePainel ? 
         dispatch(initPage(props.changePainel)) : 
         props.text === '=' ? 
-        () => operationFunction(props.text) :
+        operationFunction(props.text) :
         props.text === 'AC' ? 
-        clearCalculator : 
-        () => addScreenValue(props.text)
+        clearCalculator() : 
+        addScreenValue(props.text)
       }
       id={props.id}
     >
