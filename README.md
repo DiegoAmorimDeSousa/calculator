@@ -2,6 +2,10 @@
    Project CALCULATOR
 </h2>
 
+<h1 align="center">
+   <img src="/src/assets/using-calculator.gif">
+</h1>
+
 ## 📑 Index
 - [About](#-about)
 - [Technologies Used](#-technologies-used)
