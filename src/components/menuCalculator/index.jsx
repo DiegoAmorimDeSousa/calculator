@@ -1,6 +1,8 @@
 import React from 'react';
 import { FcCalculator } from 'react-icons/fc';
 
+import { initPage } from '../../store/InitPage/InitPage.actions';
+
 import { 
   Container,
   Title,
@@ -9,7 +11,7 @@ import {
 
 import Buttom from '../buttom';
 
-function menuCalculator() {
+function MenuCalculator() {
   return (
     <Container>
       <Title>
@@ -20,14 +22,16 @@ function menuCalculator() {
         <Buttom
           text='123'
           background='var(--color-purple)'
+          changePainel='Number'
         />
         <Buttom
           text='X'
           background='var(--color-purple)'
+          changePainel='icon'
         />
       </ButtomGroup>
     </Container>
   );
 }
 
-export default menuCalculator;
+export default MenuCalculator;

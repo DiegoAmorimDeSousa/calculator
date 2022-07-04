@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { FcCalculator } from 'react-icons/fc';
 
 import { 
   Container,
@@ -19,21 +20,26 @@ function Content() {
   return (
     <Container>
       <PainelCalculator>
-        <ValueCalculator>{valueCalculator}</ValueCalculator>
-        <GroupCalculator>
-          {buttomJson.map(buttom => {
-            return (
-              <Buttom 
-                key={buttom.text}
-                text={buttom.text} 
-                background={buttom.background}
-                bold={buttom.bold}
-                length={buttom.length}
-                id={buttom.text}
-              />
-            )
-          })}
-        </GroupCalculator>
+        {
+          initPage === 'icon' ? <FcCalculator /> : 
+          <>
+            <ValueCalculator>{valueCalculator}</ValueCalculator>
+            <GroupCalculator>
+              {buttomJson.map(buttom => {
+                return (
+                  <Buttom 
+                    key={buttom.text}
+                    text={buttom.text} 
+                    background={buttom.background}
+                    bold={buttom.bold}
+                    length={buttom.length}
+                    id={buttom.text}
+                  />
+                )
+              })}
+            </GroupCalculator>
+          </>
+        }
       </PainelCalculator>
     </Container>
   );

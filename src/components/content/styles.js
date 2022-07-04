@@ -14,6 +14,11 @@ export const Container = styled.div`
 export const PainelCalculator = styled.div`
   width: 25vw;
   height: 55vh;
+
+  svg {
+    width: 30vw;
+    height: 65vh;
+  }
 `;
 
 export const ValueCalculator = styled.div`
