@@ -42,8 +42,7 @@ function Buttom(props) {
   }
 
   const operationFunction = (valueOperation) => {
-    // bs === Back Space
-    if(valueOperation === 'bs'){
+    if(valueOperation === 'Backspace'){
       let screenValue = valueCalculatorState;
       screenValue = screenValue.substring(0, (screenValue.length - 1));
       dispatch(valueCalculator(screenValue));
@@ -62,29 +61,31 @@ function Buttom(props) {
     }
   }
 
-  // document.addEventListener("keypress", function(e) {
-  //   if(e.key === props.text) {
-  //     let buttom = document.getElementById(props.text);
+  document.addEventListener("keypress", function(e) {
+    if(e.key === props.text) {
+      let buttom = document.getElementById(props.text);
 
-  //     buttom.style.background = 'var(--color-purple-hover)';
+      buttom.style.background = 'var(--color-purple-hover)';
 
-  //     setTimeout(() => {
-  //       buttom.style.background = props.background;
-  //     }, 1000);
+      setTimeout(() => {
+        buttom.style.background = props.background;
+      }, 1000);
 
-  //     if(props.text !== 'AC' && props.text !== '='){
-  //       calculator(valueCalculatorState === '0' ? props.text : valueCalculatorState + props.text);
-  //     }
+      if(props.text === 'AC'){
+        clearCalculator();
+      } else if(props.text === '=') {
+        operationFunction(e.key);
+      } else {
+        addScreenValue(e.key);
+      }
+    }
+  });
 
-  //     if(props.text === 'AC'){
-  //       calculator('0');
-  //     }
-
-  //     if(props.text === '='){
-  //       setEqualSign(true);
-  //     }
-  //   }
-  // });
+  document.addEventListener("keydown", function(e) {
+    if(e.code === 'Backspace'){
+      operationFunction(e.code);
+    }
+  });
 
   return (
     <Container 
