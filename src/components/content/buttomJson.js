@@ -8,21 +8,21 @@ module.exports = [
   },
   {
     
-    text: '[+/-]',
+    text: '(',
     background: 'var(--color-gray)',
     bold: false,
     length: false
   },
   {
     
-    text: '%',
+    text: ')',
     background: 'var(--color-gray)',
     bold: false,
     length: false
   },
   {
     
-    text: '÷',
+    text: '/',
     background: 'var(--color-gray)',
     bold: false,
     length: false
@@ -51,7 +51,7 @@ module.exports = [
   },
   {
     
-    text: 'X',
+    text: '*',
     background: 'var(--color-gray)',
     bold: false,
     length: false

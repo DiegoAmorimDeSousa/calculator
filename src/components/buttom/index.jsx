@@ -12,20 +12,51 @@ function Buttom(props) {
 
   const valueCalculatorState = useSelector(state => state.valueCalculator.toString());
 
-  const [equalSign, setEqualSign] = useState(false);
+  const [result, setResult] = useState(0);
+  const [accumulator, setAccumulator] = useState(0);
+  const [operation, setOperation] = useState(false);  
 
-  const clickButtom = (value) => {
-    if(value !== 'AC' && value !== '='){
-      calculator(valueCalculatorState === '0' ? value : valueCalculatorState + value);
-    } 
-
-    if(value === 'AC'){
-      calculator('0');
+  const addScreenValue = (value) => {
+    if((value === '+' || value === '-' || value === '/' || value === '*') && operation){
+      setOperation(false);
+      dispatch(valueCalculator(result + value));
+      return;
     }
 
-    if(value === '='){
-      setEqualSign(true);
-      calculator(valueCalculatorState);
+    if(operation){
+      dispatch(valueCalculator(value));
+      setOperation(false);
+      return;
+    }
+
+    const valueInsertScreen = valueCalculatorState + value;
+    dispatch(valueCalculator(valueInsertScreen));
+  }
+
+  const clearCalculator = () => {
+    setOperation(false);
+    dispatch(valueCalculator(''));
+    setResult(0);
+    setAccumulator(0);
+  }
+
+  const operationFunction = (valueOperation) => {
+    // bs === Back Space
+    if(valueOperation === 'bs'){
+      let screenValue = valueCalculatorState;
+      screenValue = screenValue.substring(0, (screenValue.length - 1));
+      dispatch(valueCalculator(screenValue));
+      setOperation(false);
+      return;
+    }
+
+    try {
+      const calculate = eval(valueCalculatorState);
+      setAccumulator(calculate);
+      setResult(calculate);
+      setOperation(true);
+    } catch {
+      setResult('ERRO');
     }
   }
 
@@ -53,21 +84,6 @@ function Buttom(props) {
   //   }
   // });
 
-  const calculator = (value) => {
-    if(!value.includes('+')){
-      localStorage.setItem('FIRST_VALUE', value);
-      dispatch(valueCalculator(value));
-    } else {
-      const secondValue2 = value.split('+')[1]; 
-      dispatch(valueCalculator(value));
-      if(equalSign){
-        dispatch(valueCalculator(Number(localStorage.getItem('FIRST_VALUE')) + Number(secondValue2)));
-        localStorage.removeItem('FIRST_VALUE');
-        setEqualSign(false);
-      }
-    }
-  }
-
   return (
     <Container 
       background={props.background}
@@ -76,7 +92,11 @@ function Buttom(props) {
       onClick={() => 
         props.changePainel ? 
         dispatch(initPage(props.changePainel)) : 
-        clickButtom(props.text)
+        props.text === '=' ? 
+        () => operationFunction(props.text) :
+        props.text === 'AC' ? 
+        clearCalculator : 
+        () => addScreenValue(props.text)
       }
       id={props.id}
     >

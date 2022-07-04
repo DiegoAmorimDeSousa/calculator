@@ -1,8 +1,6 @@
 import React from 'react';
 import { FcCalculator } from 'react-icons/fc';
 
-import { initPage } from '../../store/InitPage/InitPage.actions';
-
 import { 
   Container,
   Title,
