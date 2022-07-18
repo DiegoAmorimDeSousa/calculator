@@ -13,6 +13,7 @@ function App() {
         <Router>
           <Switch>
             <Route exact path='/' component={Calculator} />
+            <Route exact path='/calculator' component={Calculator} />
           </Switch>
         </Router>
       </BrowserRouter>
