@@ -80,9 +80,9 @@ function Buttom(props) {
     }
   });
 
-  document.addEventListener("keydown", function(e) {
-    if(e.code === 'Backspace'){
-      operationFunction(e.code);
+  document.addEventListener("keydown", function(event) {
+    if(event.code === 'Backspace'){
+      operationFunction(event.code);
     }
   });
 
