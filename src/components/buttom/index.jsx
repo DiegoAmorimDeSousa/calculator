@@ -17,7 +17,6 @@ function Buttom(props) {
   const [operation, setOperation] = useState(false);  
 
   const addScreenValue = (value) => {
-    console.log(value);
     if((value === '+' || value === '-' || value === '/' || value === '*') && operation){
       setOperation(false);
       dispatch(valueCalculator(result + value));
