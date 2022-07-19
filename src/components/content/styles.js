@@ -9,6 +9,11 @@ export const Container = styled.div`
   color: var(--color-white);
   font-size: 25px;
   margin-right: 50px;
+
+  @media(max-width: 980px){
+    width: unset;
+    margin-right: 0;
+  }
 `;
 
 export const PainelCalculator = styled.div`
@@ -18,6 +23,17 @@ export const PainelCalculator = styled.div`
     width: 30vw;
     height: 65vh;
   }
+
+  @media(max-width: 980px){
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    svg {
+      height: 45vh;
+    }
+  }
 `;
 
 export const ValueCalculator = styled.div`
@@ -25,6 +41,11 @@ export const ValueCalculator = styled.div`
   font-weight: bold;
   font-size: 45px;
   letter-spacing: 1.5px;
+
+  @media(max-width: 980px){
+    font-size: 20px;
+    margin-top: 20px;
+  }
 `;
 
 export const GroupCalculator = styled.div`
@@ -34,4 +55,10 @@ export const GroupCalculator = styled.div`
   margin: 30px 0;
   width: 100%;
   padding-left: 50px;
+
+  @media(max-width: 980px){
+    width: 254px;
+    padding-left: 0;
+    margin: 20px 0;
+  }
 `;

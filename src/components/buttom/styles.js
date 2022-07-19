@@ -18,4 +18,11 @@ export const Container = styled.div`
   &:hover, &:focus {
     background: var(--color-purple-hover);
   }
+
+  @media(max-width: 980px){
+    font-size: 12px;
+    padding: 0 10px;
+    height: 40px;
+    width: ${props => props.length ? '124px' : ''};
+  }
 `;
