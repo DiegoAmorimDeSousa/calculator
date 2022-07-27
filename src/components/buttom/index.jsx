@@ -86,12 +86,6 @@ function Buttom(props) {
     }
   });
 
-  // OIEE
-  // OIIEE 2
-  // POIEE
-  // OUTRO
-  // DNV
-
   return (
     <Container 
       background={props.background}
