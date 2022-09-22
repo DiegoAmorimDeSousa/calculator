@@ -14,7 +14,7 @@ function MenuCalculator() {
     <Container>
       <Title>
         <FcCalculator />
-        Calculator
+        Calculaator
       </Title>
       <ButtomGroup>
         <Buttom
